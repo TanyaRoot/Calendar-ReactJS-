@@ -1,0 +1,26 @@
+.content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+  width: 900px;
+  height: 500px;
+ background-color: white;
+   margin: 0 auto;
+  margin-top: 10px;
+  padding-top: 16px;
+}
+
+h1 {
+  margin: 0px;
+  margin-left: 10px;
+}
+.space, .log {
+  width: 400px;
+  height: 460px;
+  background-color: #cfd8dc;
+}
+
+.DayPicker {
+  margin: 0px 5%;
+}
