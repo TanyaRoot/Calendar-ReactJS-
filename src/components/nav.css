@@ -9,12 +9,12 @@
 }
 
 .btn, .btn:hover, .btn:focus {
-      background-color: transparent;
-      box-shadow: none;
+  background-color: transparent;
+  box-shadow: none;
 
 }
 .btn i, .btn-large i, .btn-floating i, .btn-large i, .btn-flat i {
-    font-size: 1.7em;
-    line-height: inherit;
-    padding: 0;
+  font-size: 1.7em;
+  line-height: inherit;
+  padding: 0;
 }
