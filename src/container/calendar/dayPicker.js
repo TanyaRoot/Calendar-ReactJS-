@@ -8,33 +8,80 @@ class Calendar extends React.Component {
   constructor(props) {
     super(props);
     this.handleDayClick = this.handleDayClick.bind(this);
+    this.addComm = this.addComm.bind(this);
     this.state = {
-      selectedDays: [],
+      selectedDays:
+      [
+        {data: new Date(2018, 4, 11),
+         comm: 'tsap-tsap'},
+        {data: new Date(2018, 4, 31),
+         comm: 'whhaaaaaaaat?'},
+        {data: new Date(2018, 3, 4),
+         comm: 'ist time to omnomnom'},
+      ],
     };
   }
+
   handleDayClick(day, { selected }) {
     const { selectedDays } = this.state;
-    if (selected) {
-      const selectedIndex = selectedDays.findIndex(selectedDay =>
-        DateUtils.isSameDay(selectedDay, day)
-      );
-      selectedDays.splice(selectedIndex, 1);
-    } else {
-      selectedDays.push(day);
+    if (selected && 'добавить проверку на меньше дату') {
+      return
+    }
+    if (!selected) {
+      selectedDays.push({
+        data: day,
+        comm: ''
+      });
     }
     this.setState({ selectedDays: selectedDays });
-    // console.log('----', selectedDays);
   }
 
   parseLog() {
+    let parse = this.state.selectedDays
+      .sort((a,b) => {
+        return new Date(a.data) - new Date(b.data)
+      })
+      .map(item => {
+        let dateNum = item.data.getDate()
+        if (dateNum < 10) {
+          dateNum = "0" + dateNum;
+        }
+        let monthNum = item.data.getMonth() + 1
+        if (monthNum < 10) {
+          monthNum = "0" + monthNum;
+        }
+        let key = item.data.getDate().toString() + item.data.getMonth().toString() + item.data.getYear().toString();
+        return (
+          <div key={key}>
+              <div>{dateNum + '.' + monthNum + '.' + item.data.getFullYear()}</div>
+              <input type='text' value={item.comm} onChange={(e) => this.addComm(e, item)}></input>
+          </div>
 
-    let parse = this.state.selectedDays.map(item => {
-          return <li key={item.getDate().toString() + item.getMonth().toString() + item.getYear().toString()}>{item.getDate()}</li>
-        })
+         )
+      })
     return parse
   }
 
+  addComm(e, item) {
+    let newComm = this.state.selectedDays
+
+    for(let i = 0; i < newComm.length; i++) {
+      if(newComm[i].comm === item.comm && newComm[i].data.toString() === item.data.toString()) {
+        newComm[i].comm = e.target.value
+      }
+     }
+
+    this.setState({
+      selectedDays: newComm
+    })
+  }
+
   render() {
+    // console.log(this.state);
+    let testArr = this.state.selectedDays.map(item => {
+      return item.data
+    })
+
     return (
       <div className='content z-depth-2'>
 
@@ -43,7 +90,7 @@ class Calendar extends React.Component {
           <div>
             <DayPicker
               className="calendar"
-              selectedDays={this.state.selectedDays}
+              selectedDays={testArr}
               onDayClick={this.handleDayClick}
             />
           </div>
@@ -51,9 +98,10 @@ class Calendar extends React.Component {
 
         <div className="log z-depth-1">
           <h1>Log</h1>
-          <ul id="showLog">{this.parseLog()}</ul>
+          <div className="logList">
+            {this.parseLog()}
+          </div>
         </div>
-
       </div>
     )
   }
