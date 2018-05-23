@@ -3,8 +3,8 @@ import './dayPicker.css'
 import DayPicker, { DateUtils } from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
 
-class Calendar extends React.Component {
 
+class Calendar extends React.Component {
   constructor(props) {
     super(props);
     this.handleDayClick = this.handleDayClick.bind(this);
@@ -20,11 +20,62 @@ class Calendar extends React.Component {
          comm: 'ist time to omnomnom'},
       ],
     };
-
   }
 
-handleDayClick(day, { selected }) {
+  componentDidMount() {
+    let elems = $('.DayPicker-Day')
+    // console.log(elems);
+    // let elemData = $('.DayPicker-Day.DayPicker-Day--selected--before')
+
+    let jopa = elems.map(i => {
+      // console.log(elems[i].classList[1]);
+      // console.log('xxx', new Date().getDate().toString());
+    if (elems[i].classList[1] === 'DayPicker-Day--selected' ) {
+      let selData = +elems[i].innerHTML
+      // console.log("selData", +elems[i].innerHTML);
+      let nowData = +new Date().getDate().toString()
+      // console.log(nowData);
+      if (selData < nowData) {
+        elems[i].classList.value = ('DayPicker-Day DayPicker-Day--selected--before')
+      }
+      // console.log('eto', elems[i].classList);
+      // < new Date().getDate().toString()
+
+      // document.getElements
+      // console.log('eto', typeof aria-label);
+    }
+  })
+
+  // let elemData = $('.DayPicker-Day.DayPicker-Day--selected--before')
+  // console.log('tyt', typeof elemData, 'dd', elemData);
+  // console.log('data', typeof  +new Date().getDate().toString(), 'dd',  +new Date().getDate().toString());
+  // let opa = elemData.map(i => {
+  //   console.log('elemData', typeof +elemData[i].innerHTML, 'dd', +elemData[i].innerHTML)
+  //   if (+elemData[i].innerHTML > +new Date().getDate().toString()) {
+  //     elems[i].classList.value = ('DayPicker-Day DayPicker-Day--selected')
+  //   }
+  // })
+
+}
+
+  componentWillUpdate()  {
+  console.log('hello');
+  let elems = $('.DayPicker-Day')
+  let jopa = elems.map(i => {
+    if (elems[i].classList[1] === 'DayPicker-Day--selected' ) {
+      let selData = +elems[i].innerHTML
+      let nowData = +new Date().getDate().toString()
+      if (selData < nowData) {
+        elems[i].classList.value = ('DayPicker-Day DayPicker-Day--selected--before')
+      }
+    }
+  })
+}
+
+  handleDayClick(day, { selected }) {
+    console.log('чето делаю');
     const { selectedDays } = this.state;
+
 
     if (day < new Date()) {
       return
@@ -86,11 +137,26 @@ handleDayClick(day, { selected }) {
     })
   }
 
-  render() {
-    // console.log(this.state);
+  preDayPicker() {
     let testArr = this.state.selectedDays.map(item => {
       return item.data
     })
+    return (
+      <DayPicker
+        className="calendar"
+        selectedDays={testArr}
+        onDayClick={this.handleDayClick}
+      />
+    )
+  }
+
+  render() {
+    // console.log(this.state);
+    // let btn = $('.DayPicker-NavButton')
+    // let jost = btn.map(i=> {
+    //   console.log('lllllllll', btn[i])
+    //   return <option key = {knopka}>
+    // })
 
     return (
       <div className='content z-depth-2'>
@@ -98,11 +164,7 @@ handleDayClick(day, { selected }) {
         <div className="space z-depth-1">
           <h1>Calendar</h1>
           <div>
-            <DayPicker
-              className="calendar"
-              selectedDays={testArr}
-              onDayClick={this.handleDayClick}
-            />
+            {this.preDayPicker()}
           </div>
         </div>
 
