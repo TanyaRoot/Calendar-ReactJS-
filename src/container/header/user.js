@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Dropdown, Button, NavItem} from 'react-materialize'
-import './user.css'
+import './index.css'
 
 class User extends Component {
   render() {

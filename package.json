@@ -8,6 +8,7 @@
     "build": "webpack",
     "jija": "webpack --watch"
   },
+  "homepage": "https://tanyaroot.github.io/Calendar_ReactJS/",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-install": "2.1.0",

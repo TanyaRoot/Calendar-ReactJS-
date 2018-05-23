@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Header from './header/index'
 import Calendar from './calendar/dayPicker'
-import './index.css'
 
 class Container extends Component {
   render() {

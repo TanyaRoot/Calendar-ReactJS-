@@ -20,20 +20,30 @@ class Calendar extends React.Component {
          comm: 'ist time to omnomnom'},
       ],
     };
+
   }
 
-  handleDayClick(day, { selected }) {
+handleDayClick(day, { selected }) {
     const { selectedDays } = this.state;
-    if (selected && 'добавить проверку на меньше дату') {
+
+    if (day < new Date()) {
       return
     }
-    if (!selected) {
-      selectedDays.push({
-        data: day,
-        comm: ''
-      });
+
+    if (selected) {
+      const selectedIndex = selectedDays.findIndex(selectedDay =>
+        DateUtils.isSameDay(selectedDay.data, day)
+      );
+      selectedDays.splice(selectedIndex, 1);
     }
-    this.setState({ selectedDays: selectedDays });
+    else {
+        selectedDays.push({
+          data: day,
+          comm: ''
+        });
+      }
+
+    this.setState({ selectedDays: selectedDays  });
   }
 
   parseLog() {
@@ -52,8 +62,8 @@ class Calendar extends React.Component {
         }
         let key = item.data.getDate().toString() + item.data.getMonth().toString() + item.data.getYear().toString();
         return (
-          <div key={key}>
-              <div>{dateNum + '.' + monthNum + '.' + item.data.getFullYear()}</div>
+          <div key={key} className={'logListItems'}>
+              <span>{dateNum + '.' + monthNum + '.' + item.data.getFullYear()}</span>
               <input type='text' value={item.comm} onChange={(e) => this.addComm(e, item)}></input>
           </div>
 

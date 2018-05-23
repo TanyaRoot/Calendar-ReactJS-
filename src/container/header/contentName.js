@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './contentName.css'
+import './index.css'
 
 class ContentName extends Component {
   render() {
     return (
-      <a className='contentName'>Calendar</a>
+      <h1 className='contentName'>Calendar</h1>
     )
   }
 }
