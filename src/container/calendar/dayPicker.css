@@ -55,7 +55,7 @@ span {
   display: flex;
   align-items: center;
 }
-/* 
+/*
 .DayPicker-Day--selectedBefore:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
 
   color: #f0f8ff;
@@ -63,9 +63,9 @@ span {
 
 } */
 
-.DayPicker-Day--selected--before {
+.DayPicker-Day--before {
   position: relative;
   color: #f0f8ff;
-  background-color: green;
+  background-color: green !important;
   border-radius: 100%;
 }

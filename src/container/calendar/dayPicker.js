@@ -9,6 +9,7 @@ class Calendar extends React.Component {
     super(props);
     this.handleDayClick = this.handleDayClick.bind(this);
     this.addComm = this.addComm.bind(this);
+    // this.renderSelectedDays = this.renderSelectedDays.bind(this);
     this.state = {
       selectedDays:
       [
@@ -23,64 +24,14 @@ class Calendar extends React.Component {
   }
 
   componentDidMount() {
-    let elems = $('.DayPicker-Day')
-    // console.log(elems);
-    // let elemData = $('.DayPicker-Day.DayPicker-Day--selected--before')
-
-    let jopa = elems.map(i => {
-      // console.log(elems[i].classList[1]);
-      // console.log('xxx', new Date().getDate().toString());
-    if (elems[i].classList[1] === 'DayPicker-Day--selected' ) {
-      let selData = +elems[i].innerHTML
-      // console.log("selData", +elems[i].innerHTML);
-      let nowData = +new Date().getDate().toString()
-      // console.log(nowData);
-      if (selData < nowData) {
-        elems[i].classList.value = ('DayPicker-Day DayPicker-Day--selected--before')
-      }
-      // console.log('eto', elems[i].classList);
-      // < new Date().getDate().toString()
-
-      // document.getElements
-      // console.log('eto', typeof aria-label);
-    }
-  })
-
-  // let elemData = $('.DayPicker-Day.DayPicker-Day--selected--before')
-  // console.log('tyt', typeof elemData, 'dd', elemData);
-  // console.log('data', typeof  +new Date().getDate().toString(), 'dd',  +new Date().getDate().toString());
-  // let opa = elemData.map(i => {
-  //   console.log('elemData', typeof +elemData[i].innerHTML, 'dd', +elemData[i].innerHTML)
-  //   if (+elemData[i].innerHTML > +new Date().getDate().toString()) {
-  //     elems[i].classList.value = ('DayPicker-Day DayPicker-Day--selected')
-  //   }
-  // })
-
-}
-
-  componentWillUpdate()  {
-  console.log('hello');
-  let elems = $('.DayPicker-Day')
-  let jopa = elems.map(i => {
-    if (elems[i].classList[1] === 'DayPicker-Day--selected' ) {
-      let selData = +elems[i].innerHTML
-      let nowData = +new Date().getDate().toString()
-      if (selData < nowData) {
-        elems[i].classList.value = ('DayPicker-Day DayPicker-Day--selected--before')
-      }
-    }
-  })
-}
+    this.monthChange()
+  }
 
   handleDayClick(day, { selected }) {
-    console.log('чето делаю');
     const { selectedDays } = this.state;
-
-
     if (day < new Date()) {
       return
     }
-
     if (selected) {
       const selectedIndex = selectedDays.findIndex(selectedDay =>
         DateUtils.isSameDay(selectedDay.data, day)
@@ -93,7 +44,6 @@ class Calendar extends React.Component {
           comm: ''
         });
       }
-
     this.setState({ selectedDays: selectedDays  });
   }
 
@@ -137,34 +87,36 @@ class Calendar extends React.Component {
     })
   }
 
-  preDayPicker() {
-    let testArr = this.state.selectedDays.map(item => {
-      return item.data
+  monthChange() {
+    let elems = $('.DayPicker-Day')
+    let elemsMap = elems.map(i => {
+      if(elems[i].classList.contains('DayPicker-Day--selected') && elems[i].getAttribute("aria-disabled") === "false") {
+              let selData = +elems[i].innerHTML
+              let nowData = +new Date().getDate().toString()
+          if (selData < nowData) {
+            elems[i].classList.remove('DayPicker-Day--selected')
+            elems[i].classList.add('DayPicker-Day--before')
+          }
+      }
     })
-    return (
-      <DayPicker
-        className="calendar"
-        selectedDays={testArr}
-        onDayClick={this.handleDayClick}
-      />
-    )
   }
 
   render() {
-    // console.log(this.state);
-    // let btn = $('.DayPicker-NavButton')
-    // let jost = btn.map(i=> {
-    //   console.log('lllllllll', btn[i])
-    //   return <option key = {knopka}>
-    // })
-
+    let testArr = this.state.selectedDays.map(item => {
+      return item.data
+    })
     return (
       <div className='content z-depth-2'>
 
         <div className="space z-depth-1">
           <h1>Calendar</h1>
           <div>
-            {this.preDayPicker()}
+            <DayPicker
+              className="calendar"
+              selectedDays={testArr}
+              onDayClick={this.handleDayClick}
+              onMonthChange ={this.monthChange}
+            />
           </div>
         </div>
 
