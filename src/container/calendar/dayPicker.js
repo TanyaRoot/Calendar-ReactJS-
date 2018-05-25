@@ -3,13 +3,11 @@ import './dayPicker.css'
 import DayPicker, { DateUtils } from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
 
-
 class Calendar extends React.Component {
   constructor(props) {
     super(props);
     this.handleDayClick = this.handleDayClick.bind(this);
     this.addComm = this.addComm.bind(this);
-    // this.renderSelectedDays = this.renderSelectedDays.bind(this);
     this.state = {
       selectedDays:
       [
@@ -29,13 +27,16 @@ class Calendar extends React.Component {
 
   handleDayClick(day, { selected }) {
     const { selectedDays } = this.state;
+
     if (day < new Date()) {
       return
     }
     if (selected) {
       const selectedIndex = selectedDays.findIndex(selectedDay =>
+          // console.log(selectedDay.data, day);
         DateUtils.isSameDay(selectedDay.data, day)
       );
+      console.log('111', selectedIndex);
       selectedDays.splice(selectedIndex, 1);
     }
     else {
@@ -53,6 +54,7 @@ class Calendar extends React.Component {
         return new Date(a.data) - new Date(b.data)
       })
       .map(item => {
+        // console.log(item);
         let dateNum = item.data.getDate()
         if (dateNum < 10) {
           dateNum = "0" + dateNum;
@@ -66,22 +68,21 @@ class Calendar extends React.Component {
           <div key={key} className={'logListItems'}>
               <span>{dateNum + '.' + monthNum + '.' + item.data.getFullYear()}</span>
               <input type='text' value={item.comm} onChange={(e) => this.addComm(e, item)}></input>
+              <i className="material-icons" onClick = {() => this.handleDayClick(item.data, {selected: true})} > delete_outline </i>
           </div>
 
          )
       })
     return parse
   }
-
+//
   addComm(e, item) {
     let newComm = this.state.selectedDays
-
     for(let i = 0; i < newComm.length; i++) {
       if(newComm[i].comm === item.comm && newComm[i].data.toString() === item.data.toString()) {
         newComm[i].comm = e.target.value
       }
      }
-
     this.setState({
       selectedDays: newComm
     })
@@ -105,6 +106,7 @@ class Calendar extends React.Component {
     let testArr = this.state.selectedDays.map(item => {
       return item.data
     })
+
     return (
       <div className='content z-depth-2'>
 
