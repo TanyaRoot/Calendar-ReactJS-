@@ -33,10 +33,8 @@ class Calendar extends React.Component {
     }
     if (selected) {
       const selectedIndex = selectedDays.findIndex(selectedDay =>
-          // console.log(selectedDay.data, day);
         DateUtils.isSameDay(selectedDay.data, day)
       );
-      console.log('111', selectedIndex);
       selectedDays.splice(selectedIndex, 1);
     }
     else {
@@ -49,12 +47,12 @@ class Calendar extends React.Component {
   }
 
   parseLog() {
+
     let parse = this.state.selectedDays
       .sort((a,b) => {
         return new Date(a.data) - new Date(b.data)
       })
       .map(item => {
-        // console.log(item);
         let dateNum = item.data.getDate()
         if (dateNum < 10) {
           dateNum = "0" + dateNum;
@@ -65,17 +63,23 @@ class Calendar extends React.Component {
         }
         let key = item.data.getDate().toString() + item.data.getMonth().toString() + item.data.getYear().toString();
         return (
+
           <div key={key} className={'logListItems'}>
               <span>{dateNum + '.' + monthNum + '.' + item.data.getFullYear()}</span>
               <input type='text' value={item.comm} onChange={(e) => this.addComm(e, item)}></input>
-              <i className="material-icons" onClick = {() => this.handleDayClick(item.data, {selected: true})} > delete_outline </i>
+              {
+                Date.parse(item.data) < Date.parse(new Date())
+                ?
+                <span>&nbsp; &nbsp; &nbsp; &nbsp;</span>
+                :
+                <i className="material-icons" onClick = {() => this.handleDayClick(item.data, {selected: true})} > delete_outline </i>
+              }
           </div>
-
          )
       })
     return parse
   }
-//
+
   addComm(e, item) {
     let newComm = this.state.selectedDays
     for(let i = 0; i < newComm.length; i++) {
@@ -92,8 +96,8 @@ class Calendar extends React.Component {
     let elems = $('.DayPicker-Day')
     let elemsMap = elems.map(i => {
       if(elems[i].classList.contains('DayPicker-Day--selected') && elems[i].getAttribute("aria-disabled") === "false") {
-              let selData = +elems[i].innerHTML
-              let nowData = +new Date().getDate().toString()
+              let selData = Date.parse(elems[i].getAttribute("aria-label"))
+              let nowData = Date.parse(new Date())
           if (selData < nowData) {
             elems[i].classList.remove('DayPicker-Day--selected')
             elems[i].classList.add('DayPicker-Day--before')

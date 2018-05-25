@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
-import Container from './container/index'
+import Loggin from './loggin/index'
 
 class App extends Component {
+
   render() {
     return (
-      <Container />
+      <Loggin />
     )
   }
 }
 
 export default App
+
+// <Container />

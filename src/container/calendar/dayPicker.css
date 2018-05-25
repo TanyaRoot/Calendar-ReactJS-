@@ -47,21 +47,12 @@ input[type=text] {
 
 span {
   width: 70px;
-      /* min-width: 84px; */
-      /*стрелочки*/
 }
 
 .logListItems {
   display: flex;
   align-items: center;
 }
-/*
-.DayPicker-Day--selectedBefore:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
-
-  color: #f0f8ff;
-  background-color: blue !important;
-
-} */
 
 .DayPicker-Day--before {
   position: relative;
