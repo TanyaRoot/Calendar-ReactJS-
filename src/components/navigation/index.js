@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {SideNav, Button, SideNavItem} from 'react-materialize'
-import './nav.css'
+import './index.css'
 
 class Nav extends Component {
   render() {

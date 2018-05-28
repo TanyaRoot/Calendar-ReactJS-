@@ -9,7 +9,7 @@ class UserPage extends Component {
   render() {
     // console.log('25', this.props);
     return(
-      <div>
+      <div className="userPage">
         <h1>JOPA</h1>
         <button onClick={() => {this.props.getProfilStatus(!this.props.status)}} >V CALENDAR</button>
       </div>

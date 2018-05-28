@@ -4,7 +4,9 @@ import './index.css'
 class Search extends Component {
   render() {
     return (
-      <input type="text" className="searchFild" placeholder="search" />
+      <div className="all-search">
+        <input type="text" placeholder="search" />
+      </div>
     )
   }
 }

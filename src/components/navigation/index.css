@@ -1,0 +1,25 @@
+
+.sidenav {
+  padding-top: 20px;
+}
+
+.navBurger span {
+  margin-left: 20px;
+  padding: 0px;
+}
+
+.navBurger span > .btn,
+.navBurger span > .btn:hover,
+.navBurger span > .btn:focus {
+  background-color: transparent;
+  box-shadow: none;
+}
+.navBurger span > .btn i,
+.navBurger span > .btn-large i,
+.navBurger span > .btn-floating i,
+.navBurger span > .btn-large i,
+.navBurger span > .btn-flat i {
+  font-size: 1.7em;
+  line-height: inherit;
+  padding: 0;
+}

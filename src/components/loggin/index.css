@@ -1,4 +1,4 @@
-.logginSpace {
+.logginForm {
   width: 700px;
   height: 400px;
   background-color: white;
@@ -10,16 +10,16 @@
 
 }
 
-.logginForm{
-  margin:
-}
-
-input[type=text], input[type=email], input[type=password] {
-  width: 500px;
+.logginForm > input[type=text],
+.logginForm > input[type=email],
+.logginForm > input[type=password] {
+  width: 500px ;
   height: 40px;
   background-color: #f9f9f9;
+  margin: 0 0px;
 }
 
-Button {
+.logginForm > button {
   width: 500px;
+  margin-top: 10px;
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './dayPicker.css'
 import DayPicker, { DateUtils } from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
+import TasksField from '../../components/tasksField/index'
 
 class Calendar extends React.Component {
   constructor(props) {
@@ -64,7 +65,7 @@ class Calendar extends React.Component {
         let key = item.data.getDate().toString() + item.data.getMonth().toString() + item.data.getYear().toString();
         return (
 
-          <div key={key} className={'logListItems'}>
+          <div key={key} className={'logList--items'}>
               <span>{dateNum + '.' + monthNum + '.' + item.data.getFullYear()}</span>
               <input type='text' value={item.comm} onChange={(e) => this.addComm(e, item)}></input>
               {
@@ -112,27 +113,34 @@ class Calendar extends React.Component {
     })
 
     return (
-      <div className='content z-depth-2'>
 
-        <div className="space z-depth-1">
-          <h1>Calendar</h1>
-          <div>
-            <DayPicker
-              className="calendar"
-              selectedDays={testArr}
-              onDayClick={this.handleDayClick}
-              onMonthChange ={this.monthChange}
-            />
+      <div className='calendar'>
+
+        <div className="calendar--content z-depth-2">
+          <div className="content--space z-depth-1">
+            <h1>Calendar</h1>
+            <div>
+              <DayPicker
+                className="calendar"
+                selectedDays={testArr}
+                onDayClick={this.handleDayClick}
+                onMonthChange ={this.monthChange}
+              />
+            </div>
+          </div>
+
+          <div className="content--log z-depth-1">
+            <h1>Log</h1>
+            <div className="log--logList">
+              {this.parseLog()}
+            </div>
           </div>
         </div>
 
-        <div className="log z-depth-1">
-          <h1>Log</h1>
-          <div className="logList">
-            {this.parseLog()}
-          </div>
-        </div>
+        <TasksField />
+
       </div>
+
     )
   }
 }

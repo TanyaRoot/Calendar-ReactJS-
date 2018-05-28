@@ -11,11 +11,13 @@ class User extends Component {
   render() {
     // console.log('23', this.props);
     return (
-      <div className='user123'>
-        <Dropdown trigger={
-          <a><img className="dropdown_1  user123" src='../src/img/user.jpg' /></a>
+      <div className='header--user'>
+        <Dropdown className='user--dropdown'trigger={
+          <a><img className="dropdown--dropdown_1  user--img" src='../src/img/user.jpg' /></a>
           }>
-          <NavItem onClick={() => {this.props.getProfilStatus(!this.props.status)}}><img className="user123" src='../src/img/user.jpg' /></NavItem>
+          <NavItem onClick={() => {this.props.getProfilStatus(!this.props.status)}}>
+              <img className="user--img" src='../src/img/user.jpg' />
+          </NavItem>
           <NavItem>Rabbit Bo</NavItem>
           <NavItem>rabbitbo@mail.com</NavItem>
         </Dropdown>

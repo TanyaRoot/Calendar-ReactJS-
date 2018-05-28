@@ -4,7 +4,7 @@ import './index.css'
 class ContentName extends Component {
   render() {
     return (
-      <h1 className='contentName'>Calendar</h1>
+      <h1 className='header--contentName'>Calendar</h1>
     )
   }
 }

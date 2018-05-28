@@ -6,22 +6,22 @@
   background-color: #039be5
 }
 
-a {
+/* a {
   color: black;
-}
+} */
 
-input[type=text] {
-  width: 85%;
+.all-search > input {
+  width: 85% !important;
   margin: 0 0 8px 0;
   font-size: 14px;
 }
 
-input[type=text]:focus:not([readonly]) {
+.all-search > input:focus:not([readonly]) {
   border-bottom: 1px solid #039be5;
     box-shadow: 0 1px 0 0 #039be5;
 }
 
-.dropdown_1 {
+.dropdown--dropdown_1 {
   border-radius: 80%;
   width: 60px;
   height: 60px;
@@ -30,8 +30,9 @@ input[type=text]:focus:not([readonly]) {
 .dropdown-content  {
   min-width: 300px;
 }
+/*???*/
 
-.user123 {
+.header--user .user--img {
   width: 60px;
   height: 60px;
   margin-right: 20px;

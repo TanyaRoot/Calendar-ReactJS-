@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './index.css'
-import Nav from '../../components/nav'
+import Nav from '../../components/navigation/index'
 import ContentName from './contentName'
 import Search from './search'
 import User from './user'

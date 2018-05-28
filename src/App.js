@@ -1,15 +1,39 @@
 import React, { Component } from 'react'
-import Loggin from './loggin/index'
+
+import Container from './container/index'
+import Loggin from './components/loggin/index'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      defaultStatus: true
+      }
+    }
+
+  getDefaultStatus = (status) => {
+    this.setState({defaultStatus: status})
+  }
 
   render() {
     return (
-      <Loggin />
+      <div>
+           <Container />
+      </div>
     )
   }
 }
 
 export default App
 
-// <Container />
+//РАСКОМИТИТЬ
+// return (
+//   <div>
+//      {this.state.defaultStatus
+//        ?
+//        <Loggin getDefaultStatus={this.getDefaultStatus} status={this.state.defaultStatus}/>
+//        :
+//        <Container />
+//      }
+//   </div>
+// )
