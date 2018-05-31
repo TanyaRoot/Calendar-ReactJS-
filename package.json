@@ -33,6 +33,7 @@
     "materialize-css": "^1.0.0-rc.1",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
+    "react-addons-css-transition-group": "^15.6.2",
     "react-day-picker": "^7.1.9",
     "react-dom": "^16.3.2",
     "react-materialize": "^2.2.1",
@@ -40,6 +41,7 @@
     "react-router-dom": "^4.1.1",
     "react-router-redux": "^5.0.0-alpha.6",
     "react-scripts": "1.1.4",
+    "react-transition-group": "^2.3.1",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1"

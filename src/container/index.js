@@ -19,7 +19,7 @@ class Container extends Component {
 
   render() {
     return (
-      <div className='123'>
+      <div className='all'>
         <Header getProfilStatus={this.getProfilStatus} status={this.state.profilStatus}/>
         {this.state.profilStatus
            ?
