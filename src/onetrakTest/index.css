@@ -1,9 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300');
 
 .bodyTestPage {
-  max-width: 1440px;
-  min-width: 400px;
-  width: 100%;
+  min-width: 375px;
   background-color: #f3f3f3;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
@@ -23,7 +21,6 @@
 }
 .header__menu {
   display: flex;
-
 }
 
 .image {

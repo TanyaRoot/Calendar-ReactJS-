@@ -1,5 +1,7 @@
 .myCompetitionsPage {
-  width: 1236px;
+  max-width: 1236px;
+  min-width: 375px;
+  width: 100%;
   margin: 0 auto;
 }
 .myCompetitionsPage__name {
@@ -40,11 +42,9 @@
 .participate__inside-elem-ul {
   display: flex;
   flex-wrap: nowrap;
-  align-items: center;
-  align-content: center;
-  max-width: 988px;
-  min-width: 400px;
   width: 100%;
+  margin-left: 74px;
+  min-width: 375px;
 }
 .participate__heared-menu li,
 .invited__heared-menu li,
@@ -54,7 +54,6 @@
 }
 
 .participate__inside-elem {
-  width: 1236px;
   height: 76px;
   border-radius: 4px;
   background-color: #ffffff;
@@ -65,9 +64,6 @@
 .participate__inside__hover {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
 }
-/* .li-elem {
-  width: 180px;
-} */
 
 .pic-angle-down {
   width: 12px;
@@ -106,7 +102,9 @@
   border-radius: 50%;
   background-image: url('http://static2.grsites.com/archive/textures/lblue/lblue145.jpg');
 }
-
+.dots {
+  padding-right: 20px
+}
 .dot-circle{
    width: 3px;
    height: 3px;
