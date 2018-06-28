@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './index.css'
-// import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
-// import { CSSTransitionGroup } from 'react-transition-group'
 
 class TasksField extends Component {
   constructor(props) {
@@ -44,23 +42,27 @@ class TasksField extends Component {
   }
 
   openThisTask(e, refs) {
-
+    console.log('eto');
+    let root = this.state.root
+    // console.log('hhhh', typeof root);
     let taskEdit = this.state.dataTasks
-
-    if(refs === undefined) {
-      taskEdit.map((item) => {
-        if(item.taskId === e && !item.taskEdit) {
-          item.taskEdit = !item.taskEdit
-        }
-      })
-    }else {
-      taskEdit.map((item) => {
-        if(item.taskId === e && item.taskEdit) {
-          item.taskEdit = !item.taskEdit
-          item.taskName = refs[e].children[0].value
-          item.taskDescription = refs[e].children[1].value
-        }
-      })
+    if (root === true) {
+      // console.log('admin root');
+      if(refs === undefined) {
+        taskEdit.map((item) => {
+          if(item.taskId === e && !item.taskEdit) {
+            item.taskEdit = !item.taskEdit
+          }
+        })
+      }else {
+        taskEdit.map((item) => {
+          if(item.taskId === e && item.taskEdit) {
+            item.taskEdit = !item.taskEdit
+            item.taskName = refs[e].children[0].value
+            item.taskDescription = refs[e].children[1].value
+          }
+        })
+      }
     }
 
     this.setState({
@@ -76,7 +78,7 @@ class TasksField extends Component {
     // const { dataTasks} = this.state
     // console.log('blyaaaaaaaa1', e);
     // console.log('blyaaaaaaaa2', status);
-    console.log('blyaaaaaaaa3', {selected});
+    // console.log('blyaaaaaaaa3', {selected});
     let newArrCheck = this.state.dataTasks.map(item => {
       // console.log('1--', item.taskStatus, '2--', status, '3--' ,item.taskId)
       if (item.taskId === status) {
@@ -93,59 +95,41 @@ class TasksField extends Component {
   }
 
   dataTasksRender() {
-
+    console.log();
     let taskArr = this.state.dataTasks.map(item => {
       if (item.taskStatus === false) {
+        console.log('item', item);
+        return (
+            <div key={item.taskId} >
 
-      return (
+              <div  className="tasksList--checkBox accordion z-depth-1" >
+                <div className="tasksList--checkBox--in">
+                  <input className="checkBox--square" type="checkbox"
+                  onChange={(e) => this.changeOpt(e, item.taskId, {selected: true})}/>
 
-        <div key={item.taskId} >
-
-          <div  className="tasksList--checkBox accordion z-depth-1" >
-
-            <input className="checkBox--square" type="checkbox"
-            onChange={(e) => this.changeOpt(e, item.taskId, {selected: true})}/>
-
-            <div onClick={() => this.openThisTask(item.taskId)}>
-              <label htmlFor='checkBox--square' >{item.taskName}</label>
-              <span>: &nbsp; </span>
-              <span>{item.taskDescription}</span>
-            </div>
-          </div>
-
-                <div  className={item.taskEdit ? "checkBox--accordion active" : "checkBox--accordion"}
-                      ref={item.taskId}
-                      >
-                  <input className="addTask--taskName z-depth-3" type="text" defaultValue={item.taskName} />
-                  <textarea className="addTask--taskDescription" type="text" defaultValue={item.taskDescription}></textarea>
-                  <button className="addReTask--button" onClick={() => this.openThisTask(item.taskId, this.refs)}>Save</button>
+                  <div className="tasksList--rootOpenThisTask" >
+                    <label htmlFor='checkBox--square' >{item.taskName}</label>
+                    <span>: &nbsp; </span>
+                    <span>{item.taskDescription}</span>
+                  </div>
                 </div>
+                <i className="material-icons" onClick={() => this.openThisTask(item.taskId)} > create </i>
+              </div>
 
-        </div>
-      )
-    }
-    })
+              <div  className={item.taskEdit ? "checkBox--accordion__active" : "checkBox--accordion"}
+                    ref={item.taskId} >
+                <input className="addTask--taskName z-depth-3" type="text" defaultValue={item.taskName} />
+                <textarea className="addTask--taskDescription" type="text" defaultValue={item.taskDescription}></textarea>
+                <button className="addReTask--button" onClick={() => this.openThisTask(item.taskId, this.refs)}>Save</button>
+              </div>
+
+            </div>
+          )
+        }
+      })
     return taskArr
   }
-
-  /**
-  <div>
-      <div className={item.taskEdit ? "checkBox--accordion active" : "checkBox--accordion"} ref={item.taskId}>
-        <input className="addTask--taskName z-depth-3" type="text" defaultValue={item.taskName} />
-        <input className="addTask--taskDescription z-depth-3" type="text" defaultValue={item.taskDescription} />
-        <button className="" onClick={() => this.openThisTask(item.taskId, this.refs)}>Save</button>
-      </div>
-  </div>
-  */
-
-  // addTask(status) {
-  //   this.setState({newTask: status})
-  // }
-  //
-  // showArchive(status) {
-  //   this.setState({showArchive: status})
-  // }
-
+//onClick = {() => this.handleDayClick(item.data, {selected: true})}
   openTasksButton(name, status) {
     this.setState({
       [name]: status
@@ -231,8 +215,8 @@ class TasksField extends Component {
           {this.state.showArchive
             ?
             <div className="tasksList--dataArchiveRender">
-            <h1>Archive</h1>
-            {this.dataArchiveRender()}
+              <h1>Archive</h1>
+              {this.dataArchiveRender()}
             </div>
             :
             null
@@ -244,16 +228,3 @@ class TasksField extends Component {
 }
 
 export default TasksField;
-// <CSSTransitionGroup
-// transitionName="example"
-// transitionEnterTimeout={500}
-// transitionLeaveTimeout={300}>
-//   </CSSTransitionGroup>
-/**
-<ReactCSSTransitionGroup
-    className="example"
-    transitionAppear={true}
-    transitionEnterTimeout={500}
-    transitionLeaveTimeout={300} >
-</ReactCSSTransitionGroup>
-*/

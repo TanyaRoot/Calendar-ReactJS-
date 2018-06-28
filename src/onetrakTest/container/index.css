@@ -1,0 +1,134 @@
+.myCompetitionsPage {
+  width: 1236px;
+  margin: 0 auto;
+}
+.myCompetitionsPage__name {
+  display: block;
+  text-align: center;
+  font-size: 25px;
+  color: #262a31;
+  margin-top: 30px;
+}
+.myCompetitionsPage__archive-name {
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  color: #a58144;
+  margin-top: 10px;
+}
+
+.participate__heared,
+.invited__heared,
+.manage__heared {
+  height: 76px;
+  border-radius: 4px;
+  background-color: #fafafa;
+  box-shadow: 0 1px 0 0 #dddfe2;
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.name {
+  font-size: 16px;
+  margin-top: 4px;
+  margin-bottom: 10px;
+}
+
+.participate__heared-menu,
+.invited__heared-menu,
+.manage__heared-menu,
+.participate__inside-elem-ul {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-content: center;
+  max-width: 988px;
+  min-width: 400px;
+  width: 100%;
+}
+.participate__heared-menu li,
+.invited__heared-menu li,
+.manage__heared-menu li,
+.participate__inside-elem-ul li {
+  flex-basis: 23%;
+}
+
+.participate__inside-elem {
+  width: 1236px;
+  height: 76px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+.participate__inside__hover {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+}
+/* .li-elem {
+  width: 180px;
+} */
+
+.pic-angle-down {
+  width: 12px;
+  height: 12px;
+  color: #4e5768;
+}
+.marker1 {
+  width: 10px;
+  height: 76px;
+  background-color: #93d680;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.marker2 {
+  width: 10px;
+  height: 76px;
+  background: linear-gradient(to top, #93d680 50%, #009ba1 50%);
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.marker3 {
+  width: 10px;
+  height: 76px;
+  background-color: #009ba1;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.elem-team {
+  display: flex;
+  align-items: center;
+}
+.team-pic {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-image: url('http://static2.grsites.com/archive/textures/lblue/lblue145.jpg');
+}
+
+.dot-circle{
+   width: 3px;
+   height: 3px;
+   background-color: #6b7485;
+   border-radius: 50%;
+   margin: 1px;
+}
+
+.circle-bottom {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: contain;
+  background-color: #a58144;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+.circle-bottom-sign {
+  font-size: 17.6px;
+  color: #fafafa;
+}

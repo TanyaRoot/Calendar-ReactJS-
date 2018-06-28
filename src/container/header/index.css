@@ -9,6 +9,10 @@
 /* a {
   color: black;
 } */
+.header > .all-search {
+  flex-grow: 1;
+padding: 0 20px;
+}
 
 .all-search > input {
   width: 85% !important;
